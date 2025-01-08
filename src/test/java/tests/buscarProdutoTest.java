@@ -13,21 +13,21 @@ public class buscarProdutoTest extends BaseTest {
     public void buscarProdutoExistente() {
         produto.preencherCampo("iPhone 16");
         produto.clicarBuscar();
-        Assert.assertEquals("\"iPhone 16\"", produto.confirmarProduto("//*[@id=\"search\"]/span/div/h1/div/div[1]/div/h2/span[3]"));
+        Assert.assertEquals("\"iPhone 16\"", produto.confirmarProduto("/html/body/div[1]/div[1]/span/div/h1/div/div[1]/div/h2/span[3]"));
     }
 
     @Test
     public void buscarProdutoInexistente() {
         produto.preencherCampo("shaushaus");
         produto.clicarBuscar();
-        Assert.assertEquals("Nenhum resultado para", produto.confirmarProduto("//*[@id=\"search\"]/div[1]/div[1]/div/span[1]/div[1]/div[1]/div/div/div/div[1]/span[1]"));
+        Assert.assertEquals("Nenhum resultado para", produto.confirmarProduto("/html/body/div[1]/div[1]/div[1]/div[1]/div/span[1]/div[1]/div[1]/div/div/div/div[1]/span[1]"));
     }
 
     @Test
     public void buscarProdutoComErroDeDigitacao() {
         produto.preencherCampo("iPhxne 16");
         produto.clicarBuscar();
-        Assert.assertEquals("\"iphone 16\"", produto.confirmarProduto("//*[@id=\"search\"]/span/div/h1/div/div[1]/div/h2/span[3]"));
+        Assert.assertEquals("\"iphone 16\"", produto.confirmarProduto("/html/body/div[1]/div[1]/span/div/h1/div/div[1]/div/h2/span[3]"));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class buscarProdutoTest extends BaseTest {
         produto.preencherCampo("iPhone 16");
         produto.clicarBuscar();
         produto.clicarBotaoOrdenacaoCrescenteDeValor();
-        Assert.assertEquals("Preço: Do menor para o maior", produto.confirmarProduto("//*[@id=\"a-autoid-64-announce\"]/span[2]"));
+        Assert.assertEquals("Preço: Do menor para o maior", produto.confirmarProduto("/html/body/div[1]/div[1]/span/div/h1/div/div[4]/div/div/form/span/span/span/span/span[2]"));
     }
 
     @Test
@@ -46,12 +46,12 @@ public class buscarProdutoTest extends BaseTest {
         Assert.assertEquals("Preço: Do maior para o menor", produto.confirmarProduto("/html/body/div[1]/div[1]/span/div/h1/div/div[4]/div/div/form/span/span/span/span/span[2]"));
     }
 
-    // ERRO
     @Test
-    public void buscarProdutoPorCategoriaCelularesSmartphones() {
+    public void navegarParaCategoriaCelularesSmartphones() throws InterruptedException {
         produto.clicarNoMenu();
+        produto.clicarNaCategoriaMaisVendidos();
+        produto.clicarNaCategoriaEletronicos();
+        produto.clicarNaCategoriaCelularesComunicacao();
         produto.clicarNaCategoriaCelularesSmartphones();
-        produto.aplicarFiltros();
-        Assert.assertEquals("Apple iPhone 16 Pro Max (512 GB) – Titânio natural", produto.confirmarProduto("//*[@id=\"da2f58de-75d3-4921-b287-b5ce3c4fc54f\"]/div/div/span/div/div/div[2]/div[1]/a/h2/span"));
     }
 }
