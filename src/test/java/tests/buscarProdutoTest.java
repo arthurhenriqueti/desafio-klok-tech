@@ -35,5 +35,22 @@ public class buscarProdutoTest extends BaseTest {
         produto.preencherCampo("iPhone 16");
         produto.clicarBuscar();
         produto.clicarBotaoOrdenacaoCrescenteDeValor();
+        Assert.assertEquals("Preço: Do menor para o maior", produto.confirmarProduto("//*[@id=\"a-autoid-64-announce\"]/span[2]"));
+    }
+
+    @Test
+    public void buscarProdutoNaOrdemDecrescenteDeValor() {
+        produto.preencherCampo("iPhone 16");
+        produto.clicarBuscar();
+        produto.clicarBotaoOrdenacaoDecrescenteDeValor();
+        Assert.assertEquals("Preço: Do maior para o menor", produto.confirmarProduto("//*[@id=\"a-autoid-64-announce\"]/span[2]"));
+    }
+
+    @Test
+    public void buscarProdutoPorCategoriaCelularesSmartphones() {
+        produto.clicarNoMenu();
+        produto.clicarNaCategoriaCelularesSmartphones();
+        produto.aplicarFiltros();
+        Assert.assertEquals("Apple iPhone 16 Pro Max (512 GB) – Titânio natural", produto.confirmarProduto("//*[@id=\"da2f58de-75d3-4921-b287-b5ce3c4fc54f\"]/div/div/span/div/div/div[2]/div[1]/a/h2/span"));
     }
 }

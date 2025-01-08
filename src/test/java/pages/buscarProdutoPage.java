@@ -1,6 +1,7 @@
 package pages;
 
 import core.BasePage;
+import org.junit.Assert;
 
 public class buscarProdutoPage extends BasePage {
 
@@ -17,7 +18,28 @@ public class buscarProdutoPage extends BasePage {
         clicarBotaoPeloXpath("//*[@id=\"s-result-sort-select_1\"]");
     }
 
+    public void clicarBotaoOrdenacaoDecrescenteDeValor() {
+        clicarBotaoPeloXpath("//*[@id=\"a-autoid-0-announce\"]");
+        clicarBotaoPeloXpath("//*[@id=\"s-result-sort-select_2\"]");
+    }
+
     public String confirmarProduto(String xpath) {
         return obterTextoPeloXpath(xpath);
+    }
+
+    public void clicarNoMenu() {
+        clicarBotaoPeloId("nav-hamburger-menu");
+    }
+
+    public void clicarNaCategoriaCelularesSmartphones() {
+        clicarBotaoPeloXpath("//*[@id=\"hmenu-content\"]/ul[1]/li[20]/a[1]");
+        clicarBotaoPeloXpath("//*[@id=\"hmenu-content\"]/ul[1]/ul[1]/li[5]/a");
+        clicarBotaoPeloXpath("//*[@id=\"hmenu-content\"]/ul[16]/li[4]/a");
+        Assert.assertEquals("Celulares e Smartphones", confirmarProduto("//*[@id=\"a-page\"]/div[1]/div[2]/div[1]/div/div/h1/b"));
+    }
+
+    public void aplicarFiltros() {
+        clicarBotaoPeloXpath("//*[@id=\"s-refinements\"]/div[4]/ul/li[1]/span/a/div/label/i");
+        clicarBotaoPeloXpath("//*[@id=\"p_n_feature_thirty_browse-bin/120222012011\"]/span/a/div/label/i");
     }
 }
