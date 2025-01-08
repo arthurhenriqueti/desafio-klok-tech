@@ -2,6 +2,9 @@ package core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class DriverPage {
 
@@ -11,6 +14,7 @@ public class DriverPage {
         if (driver == null) {
             System.setProperty("webdriver.gecko.driver", ".\\src\\driver\\geckodriver.exe");
             driver = new FirefoxDriver();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
         return driver;
     }

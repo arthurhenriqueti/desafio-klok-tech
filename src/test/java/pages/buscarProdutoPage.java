@@ -12,6 +12,11 @@ public class buscarProdutoPage extends BasePage {
         clicarBotaoPeloId("nav-search-submit-button");
     }
 
+    public void clicarBotaoOrdenacaoCrescenteDeValor() {
+        clicarBotaoPeloXpath("//*[@id=\"a-autoid-0-announce\"]");
+        clicarBotaoPeloXpath("//*[@id=\"s-result-sort-select_1\"]");
+    }
+
     public String confirmarProduto(String xpath) {
         return obterTextoPeloXpath(xpath);
     }
