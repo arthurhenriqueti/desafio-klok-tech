@@ -1,6 +1,7 @@
 package core;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverPage {
 
@@ -8,7 +9,8 @@ public class DriverPage {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            System.setProperty("webdriver.gecko.driver", "D:\\dev\\DesafioKlokTech\\src\\driver\\geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", ".\\src\\driver\\geckodriver.exe");
+            driver = new FirefoxDriver();
         }
         return driver;
     }
