@@ -43,9 +43,10 @@ public class buscarProdutoTest extends BaseTest {
         produto.preencherCampo("iPhone 16");
         produto.clicarBuscar();
         produto.clicarBotaoOrdenacaoDecrescenteDeValor();
-        Assert.assertEquals("Preço: Do maior para o menor", produto.confirmarProduto("//*[@id=\"a-autoid-64-announce\"]/span[2]"));
+        Assert.assertEquals("Preço: Do maior para o menor", produto.confirmarProduto("/html/body/div[1]/div[1]/span/div/h1/div/div[4]/div/div/form/span/span/span/span/span[2]"));
     }
 
+    // ERRO
     @Test
     public void buscarProdutoPorCategoriaCelularesSmartphones() {
         produto.clicarNoMenu();

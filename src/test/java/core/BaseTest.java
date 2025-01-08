@@ -12,7 +12,7 @@ public class BaseTest {
     @Before
     public void iniciar() {
         getDriver().manage().window().maximize();
-        getDriver().get("https://www.amazon.com.br/");
+        getDriver().get("https://www.amazon.com.br");
         Assert.assertEquals("Amazon.com.br | Tudo pra você, de A a Z.", getDriver().getTitle());
     }
 
